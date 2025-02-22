@@ -1,0 +1,28 @@
+.gift-box {
+    background-color: #65003b;
+    color: white;
+    padding: 30px;
+    border: 5px solid white;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.gift-text {
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+.gift-icon {
+    width: 80px;
+    height: auto;
+    margin: 10px 0;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gift-text {
+        font-size: 18px;
+    }
+}

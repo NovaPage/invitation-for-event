@@ -1,0 +1,23 @@
+/* Estilos del Header */
+.header-title {
+    font-family: 'Great Vibes';
+    font-size: 90px;
+    color: #65003b;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* RESPONSIVE: Tamaños de Pantalla Ajustables */
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 50px;
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 769px) {
+    .header-title {
+        font-size: 110px;
+        margin-top: 30px;
+    }
+}

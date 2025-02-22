@@ -1,0 +1,115 @@
+.gallery-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+
+.gallery-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+}
+
+.gallery-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+
+.gallery-image {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    position: absolute;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Imagen activa en el centro */
+.gallery-image.active {
+    transform: scale(1.2);
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Imágenes laterales con opacidad y más pequeñas */
+.gallery-image.left {
+    transform: translateX(-200px) scale(0.9);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.gallery-image.right {
+    transform: translateX(200px) scale(0.9);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/* Botones del carrusel */
+.gallery-btn {
+    background-color: #65003b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px;
+    transition: all 0.2s ease-in-out;
+}
+
+.gallery-btn:hover {
+    background-color: #977ba3;
+    transform: scale(1.1);
+}
+
+/* RESPONSIVE (Carrusel vertical en móviles) */
+@media (max-width: 768px) {
+    .gallery-container {
+        flex-direction: column;
+    }
+
+    .gallery-frame {
+        width: 300px;
+        height: 400px;
+    }
+
+    .gallery-track {
+        flex-direction: column;
+    }
+
+    .gallery-image {
+        width: 300px;
+        height: 300px;
+    }
+
+    .gallery-image.left {
+        transform: translateY(-150px) scale(0.9);
+    }
+
+    .gallery-image.right {
+        transform: translateY(150px) scale(0.9);
+    }
+
+    .gallery-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+    }
+}

@@ -1,0 +1,32 @@
+.dress-code-box {
+    background-color: white;
+    color: #65003b;
+    padding: 30px;
+    border: 5px solid #65003b;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 30px;
+}
+
+.dress-code-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.dress-code-icon {
+    width: 80px;
+    height: auto;
+}
+
+.dress-code-table th, .dress-code-table td {
+    border: 2px solid #65003b;
+    padding: 10px;
+    font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dress-code-table th, .dress-code-table td {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,50 @@
+.welcome-box {
+    background-color: #65003b;
+    background-image: url("../source/backgorund-welcome.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #65003b;
+    padding: 30px;
+    border: 10px solid #65003b;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.welcome-text-title {
+    font-family: 'Great Vibes';
+    font-size: 30px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.welcome-text-body {
+    font-family: 'Glacial Indifference';
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .welcome-box {
+        padding: 20px;
+    }
+
+    .welcome-text {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 769px) {
+    .welcome-box {
+        padding: 40px;
+    }
+
+    .welcome-text {
+        font-size: 24px;
+    }
+}

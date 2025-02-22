@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap'); /* Enlace a la fuente */
+@import url('https://fonts.googleapis.com/css2?family=Glacial+Indifference&display=swap'); /* Enlace a la fuente */
+@import url("hero.css");
+@import url("welcome.css");
+@import url("countdown.css");
+@import url("gallery.css");
+@import url("dresscode.css");
+@import url("gifts.css");
+@import url("finalinfo.css");
+@import url("footer.css");
+@import url("header.css");
+
+body {  
+    font-family: 'Glacial Indifference', sans-serif !important;
+    background-color: #ddcad5;
+    text-align: center;
+    color: #65003b;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Ocultar scrollbar */
+body {
+    overflow: auto;
+}
+body, html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Inicialmente ocultamos las secciones pero aseguramos que sigan ocupando espacio */
+.section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    display: block;
+    min-height: 100px; /* Asegura que la sección tenga tamaño antes de mostrarse */
+    visibility: hidden;
+}
+
+/* Evita que las secciones desaparezcan antes de cargarse */
+.section.loaded {
+    visibility: visible;
+}
+
+/* Cuando la sección entra en pantalla, aparece con animación */
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
