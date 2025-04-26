@@ -1,6 +1,9 @@
-.gallery-container {
+/* =========================================
+   Contenedor principal de la galería
+   ========================================= */
+   .gallery-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row;           /* Horizontal en PC */
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -8,17 +11,23 @@
     position: relative;
 }
 
+/* =========================================
+   Marco de la galería
+   ========================================= */
 .gallery-frame {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 700px;
     height: 500px;
-    overflow: hidden;
+    overflow: visible;             /* Mostrar imágenes overflow */
     position: relative;
-    border-radius: 20px;
+    border-radius: 20px;           /* Bordes redondeados del contenedor */
 }
 
+/* =========================================
+   Pista de imágenes dentro del marco
+   ========================================= */
 .gallery-track {
     display: flex;
     align-items: center;
@@ -29,12 +38,14 @@
     transition: transform 0.5s ease-in-out;
 }
 
-
+/* =========================================
+   Estilos generales para las imágenes
+   ========================================= */
 .gallery-image {
     width: 400px;
     height: 400px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 20px;           /* Bordes redondeados en todas las imágenes */
     position: absolute;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
@@ -44,72 +55,130 @@
     transform: scale(1.2);
     opacity: 1;
     z-index: 2;
+    border-radius: 20px;           /* Asegurar el redondeo en la imagen activa */
 }
 
-/* Imágenes laterales con opacidad y más pequeñas */
+/* Imágenes laterales con opacidad y tamaño reducido */
 .gallery-image.left {
     transform: translateX(-200px) scale(0.9);
     opacity: 0.5;
     z-index: 1;
+    border-radius: 20px;           /* Asegurar el redondeo en laterales */
 }
 
 .gallery-image.right {
     transform: translateX(200px) scale(0.9);
     opacity: 0.5;
     z-index: 1;
+    border-radius: 20px;           /* Asegurar el redondeo en laterales */
 }
 
-/* Botones del carrusel */
+/* =========================================
+   Botones del carrusel
+   ========================================= */
 .gallery-btn {
-    background-color: #65003b;
-    color: white;
-    border: none;
-    border-radius: 50%;
+    /* Contexto de apilamiento para poder subir z-index */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Tamaño y tipografía */
     width: 80px;
     height: 80px;
+    padding: 0;
     font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
+    text-indent: -9999px;          /* Oculta el texto original */
+
+    /* Colores y bordes */
+    color:  #a07489;                  /* Color de la flecha y del borde */
+    border: 2px solid currentColor;/* Borde igual al color (white) */
+    border-radius: 50%;            /* Botón circular */
+    background-color: #ddcad5;     /* Fondo sólido, sin transparencia */
+
+    /* Márgenes y transición */
     margin: 20px;
+    cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
 
+/* Hover state para botón */
 .gallery-btn:hover {
-    background-color: #977ba3;
+    background-color: #a07489;
+    color: #65003b;
     transform: scale(1.1);
 }
 
-/* RESPONSIVE (Carrusel vertical en móviles) */
+/* Pseudo-elementos para inyectar flechas sin tocar el HTML */
+#prevBtn::before {
+    content: '◀';                  /* Flecha izquierda en desktop */
+    text-indent: 0;                /* Mostrar el contenido del pseudo-elemento */
+}
+#nextBtn::before {
+    content: '▶';                  /* Flecha derecha en desktop */
+    text-indent: 0;
+}
+
+/* =========================================
+   Responsive (Carrusel vertical en móviles)
+   ========================================= */
 @media (max-width: 768px) {
     .gallery-container {
-        flex-direction: column;
+        flex-direction: column;    /* Vertical en móvil */
     }
 
     .gallery-frame {
         width: 300px;
         height: 400px;
+        overflow: visible;         /* Mostrar overflow en móviles */
+        border-radius: 20px;       /* Bordes redondeados en móviles */
     }
 
     .gallery-track {
-        flex-direction: column;
+        flex-direction: column;    /* Pista vertical */
     }
 
     .gallery-image {
         width: 300px;
         height: 300px;
+        object-fit: cover;
+        border-radius: 20px;       /* Bordes redondeados en móviles */
+    }
+
+    .gallery-image.active {
+        transform: scale(1.2);
+        opacity: 1;
+        z-index: 2;
+        border-radius: 20px;       /* Asegurar redondeo en activo */
     }
 
     .gallery-image.left {
         transform: translateY(-150px) scale(0.9);
+        opacity: 0.5;
+        z-index: 1;
+        border-radius: 20px;       /* Redondeo en laterales móviles */
     }
 
     .gallery-image.right {
         transform: translateY(150px) scale(0.9);
+        opacity: 0.5;
+        z-index: 1;
+        border-radius: 20px;       /* Redondeo en laterales móviles */
     }
 
+    /* Ajuste de tamaño y z-index para garantizar clics */
     .gallery-btn {
         width: 60px;
         height: 60px;
         font-size: 30px;
+        z-index: 10;
+    }
+
+    /* Flechas arriba/abajo en móvil */
+    #prevBtn::before {
+        content: '▲';
+    }
+    #nextBtn::before {
+        content: '▼';
     }
 }
