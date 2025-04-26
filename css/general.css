@@ -66,7 +66,7 @@
 }
 
 /*=========================================
-  3️⃣ Estilos base (igual que antes)
+  3️⃣ Estilos base
 ==========================================*/
 body {
   margin: 0;
@@ -105,7 +105,66 @@ body::-webkit-scrollbar {
   transform: translateY(0);
 }
 
-/* Media query global (si quisieras ajustar font-size, etc.) */
+/*=========================================
+  4️⃣ Estilos para el Preloader
+==========================================*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Logo del preloader */
+.preloader-logo {
+  width: 180px;
+  height: auto;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Spinner del preloader (no eliminado, pero ahora no lo usas) */
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-top: 8px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Animaciones */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/*=========================================
+  5️⃣ Ajustes generales opcionales para medios (video, imágenes)
+==========================================*/
+.hero-video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Media query global */
 @media (max-width: var(--breakpoint-mobile)) {
   body {
     font-size: 14px;

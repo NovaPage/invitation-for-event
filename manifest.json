@@ -1,0 +1,23 @@
+{
+    "name": "Invitación 15 Años",
+    "short_name": "Invitación",
+    "description": "Sitio interactivo para la invitación de 15 años con galería, cuenta regresiva y más.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ddcad5",
+    "theme_color": "#65003b",
+    "icons": [
+      {
+        "src": "source/corazon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "source/corazon-izquierdo.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  }
+  
+  
