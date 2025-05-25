@@ -92,33 +92,31 @@ function initializeGallery() {
                         img.classList.add("right");
                 });
 
-                // Precargar próxima imagen
                 const nextImg = galleryImages[(currentIndex + 1) % galleryImages.length];
                 new Image().src = nextImg.src;
             });
         }
 
-        prevBtn.addEventListener("click", () => {
-            currentIndex = (currentIndex === 0) ? galleryImages.length - 1 : currentIndex - 1;
-            updateGallery();
-        });
+        function touchFeedback(button) {
+            button.classList.add("touched");
+            setTimeout(() => {
+                button.classList.remove("touched");
+            }, 150);
+        }
 
-        nextBtn.addEventListener("click", () => {
-            currentIndex = (currentIndex === galleryImages.length - 1) ? 0 : currentIndex + 1;
-            updateGallery();
-        });
         prevBtn.addEventListener("click", (e) => {
             currentIndex = (currentIndex === 0) ? galleryImages.length - 1 : currentIndex - 1;
             updateGallery();
-            e.target.blur(); // 🔥 Quitar focus para eliminar hover en móviles
+            e.target.blur();
+            touchFeedback(prevBtn);
         });
-        
+
         nextBtn.addEventListener("click", (e) => {
             currentIndex = (currentIndex === galleryImages.length - 1) ? 0 : currentIndex + 1;
             updateGallery();
-            e.target.blur(); // 🔥 Quitar focus para eliminar hover en móviles
+            e.target.blur();
+            touchFeedback(nextBtn);
         });
-        
 
         updateGallery();
     }, 500);
@@ -133,7 +131,6 @@ window.addEventListener('load', () => {
         ...document.querySelectorAll('img.hero-image, img.gallery-image, video.hero-video')
     ];
 
-    // Forzar carga inmediata en imágenes/videos críticos
     const promises = criticalAssets.map(asset => {
         if (asset.tagName === 'IMG' && asset.complete) return Promise.resolve();
         if (asset.tagName === 'VIDEO' && asset.readyState >= 2) return Promise.resolve();
@@ -145,11 +142,9 @@ window.addEventListener('load', () => {
             if (preloader) preloader.classList.add('hidden');
         })
         .catch(() => {
-            // Si falla alguna carga, ocultamos igual para no dejar bloqueado
             if (preloader) preloader.classList.add('hidden');
         });
 
-    // Aplicar lazy loading a las demás imágenes no críticas
     document.querySelectorAll('img:not(.hero-image):not(.gallery-image)').forEach(img => {
         img.loading = 'lazy';
         img.classList.add('smooth-transform');

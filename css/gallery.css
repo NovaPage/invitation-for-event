@@ -180,3 +180,10 @@
         content: '▼';               /* Flecha abajo en móvil */
     }
 }
+
+/* Animación táctil rápida para móviles */
+.gallery-btn.touched {
+    transform: scale(0.95);
+    background-color: #b58ca0;
+    transition: transform 0.1s ease, background-color 0.1s ease;
+}
