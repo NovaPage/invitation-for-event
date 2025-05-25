@@ -76,43 +76,43 @@
 /* =========================================
    Botones del carrusel
    ========================================= */
-.gallery-btn {
-    /* Contexto de apilamiento para poder subir z-index */
+   .gallery-btn {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* Tamaño y tipografía */
     width: 80px;
     height: 80px;
     padding: 0;
     font-size: 40px;
     text-indent: -9999px;          /* Oculta el texto original */
-
-    /* Colores y bordes */
-    color:  #a07489;                  /* Color de la flecha y del borde */
-    border: 2px solid currentColor;/* Borde igual al color (white) */
-    border-radius: 50%;            /* Botón circular */
-    background-color: #ddcad5;     /* Fondo sólido, sin transparencia */
-
-    /* Márgenes y transición */
+    color:  #a07489;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    background-color: #ddcad5;
     margin: 20px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    outline: none; /* 🔥 Bloquear borde azul en desktop/móvil */
+    -webkit-tap-highlight-color: transparent; /* 🔥 Bloquear capa azul en Android/iOS */
+    user-select: none; /* 🔥 Bloquear selección accidental en móviles */
+    touch-action: manipulation; /* 🔥 Optimizar respuesta táctil (reduce latencia) */
 }
 
-/* Hover state para botón */
-.gallery-btn:hover {
-    background-color: #a07489;
-    color: #65003b;
-    transform: scale(1.1);
-}
 
+/* Hover solamente si hay soporte para hover (NO en móviles) */
+@media (hover: hover) and (pointer: fine) {
+    .gallery-btn:hover {
+        background-color: #a07489;
+        color: #65003b;
+        transform: scale(1.1);
+    }
+  }
+  
 /* Pseudo-elementos para inyectar flechas sin tocar el HTML */
 #prevBtn::before {
     content: '◀';                  /* Flecha izquierda en desktop */
-    text-indent: 0;                /* Mostrar el contenido del pseudo-elemento */
+    text-indent: 0;
 }
 #nextBtn::before {
     content: '▶';                  /* Flecha derecha en desktop */
@@ -130,43 +130,42 @@
     .gallery-frame {
         width: 300px;
         height: 400px;
-        overflow: visible;         /* Mostrar overflow en móviles */
-        border-radius: 20px;       /* Bordes redondeados en móviles */
+        overflow: visible;
+        border-radius: 20px;
     }
 
     .gallery-track {
-        flex-direction: column;    /* Pista vertical */
+        flex-direction: column;
     }
 
     .gallery-image {
         width: 300px;
         height: 300px;
         object-fit: cover;
-        border-radius: 20px;       /* Bordes redondeados en móviles */
+        border-radius: 20px;
     }
 
     .gallery-image.active {
         transform: scale(1.2);
         opacity: 1;
         z-index: 2;
-        border-radius: 20px;       /* Asegurar redondeo en activo */
+        border-radius: 20px;
     }
 
     .gallery-image.left {
         transform: translateY(-150px) scale(0.9);
         opacity: 0.5;
         z-index: 1;
-        border-radius: 20px;       /* Redondeo en laterales móviles */
+        border-radius: 20px;
     }
 
     .gallery-image.right {
         transform: translateY(150px) scale(0.9);
         opacity: 0.5;
         z-index: 1;
-        border-radius: 20px;       /* Redondeo en laterales móviles */
+        border-radius: 20px;
     }
 
-    /* Ajuste de tamaño y z-index para garantizar clics */
     .gallery-btn {
         width: 60px;
         height: 60px;
@@ -174,11 +173,10 @@
         z-index: 10;
     }
 
-    /* Flechas arriba/abajo en móvil */
     #prevBtn::before {
-        content: '▲';
+        content: '▲';               /* Flecha arriba en móvil */
     }
     #nextBtn::before {
-        content: '▼';
+        content: '▼';               /* Flecha abajo en móvil */
     }
 }

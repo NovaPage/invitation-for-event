@@ -170,3 +170,9 @@ body::-webkit-scrollbar {
     font-size: 14px;
   }
 }
+
+/* 🔥 Bloquear highlight azul globalmente en todos los elementos clickeables en móviles */
+* {
+    -webkit-tap-highlight-color: transparent;
+  }
+  

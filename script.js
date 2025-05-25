@@ -107,6 +107,18 @@ function initializeGallery() {
             currentIndex = (currentIndex === galleryImages.length - 1) ? 0 : currentIndex + 1;
             updateGallery();
         });
+        prevBtn.addEventListener("click", (e) => {
+            currentIndex = (currentIndex === 0) ? galleryImages.length - 1 : currentIndex - 1;
+            updateGallery();
+            e.target.blur(); // 🔥 Quitar focus para eliminar hover en móviles
+        });
+        
+        nextBtn.addEventListener("click", (e) => {
+            currentIndex = (currentIndex === galleryImages.length - 1) ? 0 : currentIndex + 1;
+            updateGallery();
+            e.target.blur(); // 🔥 Quitar focus para eliminar hover en móviles
+        });
+        
 
         updateGallery();
     }, 500);
